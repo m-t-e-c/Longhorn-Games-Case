@@ -2,7 +2,7 @@
 
 namespace PAC.Scripts.Runtime.Objects
 {
-    public class Whiteboard : MonoBehaviour
+    public class Whiteboard : CompleteableObject
     {
         private Renderer _renderer;
 
@@ -14,6 +14,7 @@ namespace PAC.Scripts.Runtime.Objects
         public void Drawn(Color color)
         {
             _renderer.material.color = color;
+            Complete();
         }
     }
 }
