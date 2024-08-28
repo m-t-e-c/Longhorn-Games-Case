@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using PAC.Scripts.Runtime.Objects;
+using UnityEngine;
 
-namespace PAC.Scripts.Runtime
+namespace PAC.Scripts.Runtime.Gameplay
 {
     public class InteractionHandler : MonoBehaviour
     {

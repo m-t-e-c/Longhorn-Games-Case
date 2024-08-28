@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PAC.Scripts.Runtime
+namespace PAC.Scripts.Runtime.Objects
 {
     public class Whiteboard : MonoBehaviour
     {

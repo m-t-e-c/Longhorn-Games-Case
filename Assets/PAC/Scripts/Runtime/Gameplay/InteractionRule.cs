@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using PAC.Scripts.Runtime.Strategies;
+using UnityEngine;
 
-namespace PAC.Scripts.Runtime.Strategies
+namespace PAC.Scripts.Runtime.Gameplay
 {
     [System.Serializable]
     public struct InteractionRule

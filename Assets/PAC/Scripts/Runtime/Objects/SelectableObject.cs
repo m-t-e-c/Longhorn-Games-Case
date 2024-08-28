@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DG.Tweening;
+using PAC.Scripts.Runtime.Gameplay;
 using PAC.Scripts.Runtime.Strategies;
 using UnityEngine;
 
-namespace PAC.Scripts.Runtime
+namespace PAC.Scripts.Runtime.Objects
 {
     public class SelectableObject : MonoBehaviour
     {
