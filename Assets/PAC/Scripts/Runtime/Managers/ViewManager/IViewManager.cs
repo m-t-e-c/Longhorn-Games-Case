@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace PAC.Scripts.Runtime.Managers.LevelManager
+namespace PAC.Scripts.Runtime.Managers.ViewManager
 {
     public class LoadViewParams<T> : EventArgs
     {

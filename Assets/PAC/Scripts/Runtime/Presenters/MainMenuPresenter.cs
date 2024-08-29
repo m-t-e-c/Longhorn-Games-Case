@@ -1,35 +1,44 @@
-﻿using PAC.Scripts.Runtime.Managers.LevelManager;
-using PAC.Scripts.Runtime.ServiceLocator;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using PAC.Scripts.Runtime.Models;
+using PAC.Scripts.Runtime.Views;
 
 namespace PAC.Scripts.Runtime.Presenters
 {
-    public class MainMenuPresenter : BasePresenter<MainMenuPresenter>
+    public class MainMenuPresenter : BasePresenter<MainMenuView>
     {
-        [SerializeField] private Button startGameButton;
-        [SerializeField] private Button levelsButton;
+        private readonly MainMenuModel _model;
         
-        private IViewManager _viewManager;
-
-        protected override void Start()
+        public MainMenuPresenter(MainMenuView view) : base(view)
         {
-            base.Start();
+            _model = new MainMenuModel();
+            _model.OnDataChanged += OnDataChanged;
 
-            _viewManager = Locator.Instance.Get<IViewManager>();
-            
-            startGameButton.onClick.AddListener(OnStartGameButtonClicked);
-            levelsButton.onClick.AddListener(OnLevelsButtonClicked);
+            UpdateView();
         }
         
-        private void OnStartGameButtonClicked()
+        private void OnDataChanged()
         {
-            Debug.Log("Start Game Button Clicked");
+            UpdateView();
+        }
+
+        private void UpdateView()
+        {
+            // Update view with model data
         }
         
-        private void OnLevelsButtonClicked()
+        public void StartGame()
         {
-            Debug.Log("Levels Button Clicked");
+            // Start game
+        }
+        
+        public void ShowLevelsPanel()
+        {
+            // Show levels panel
+        }
+        
+        public override void Dispose()
+        {
+            _model.OnDataChanged -= OnDataChanged;
+            _model.Dispose();
         }
     }
 }
