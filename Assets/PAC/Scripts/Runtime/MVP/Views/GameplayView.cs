@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using PAC.Scripts.Runtime.Objects;
-using PAC.Scripts.Runtime.Presenters;
+using PAC.Scripts.Runtime.Level;
+using PAC.Scripts.Runtime.MVP.Presenters;
 using PAC.Scripts.Runtime.UI;
 using TMPro;
 using UnityEngine;
 
-namespace PAC.Scripts.Runtime.Views
+namespace PAC.Scripts.Runtime.MVP.Views
 {
     public class GameplayView : BaseView<GameplayView>
     {
@@ -37,10 +37,10 @@ namespace PAC.Scripts.Runtime.Views
 
         public void UpdateLevelLabel(int level)
         {
-            levelLabel.text = $"Level {level}";
+            levelLabel.text = $"LEVEL {level}";
         }
 
-        public void UpdateLevelConditions(List<CompleteableObject> levelConditions)
+        public void UpdateLevelConditions(List<LevelCompletionCondition> levelConditions)
         {
             levelConditionPanel.Initialize(levelConditions);
         }

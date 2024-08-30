@@ -1,8 +1,8 @@
-﻿using PAC.Scripts.Runtime.Presenters;
+﻿using PAC.Scripts.Runtime.MVP.Presenters;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PAC.Scripts.Runtime.Views
+namespace PAC.Scripts.Runtime.MVP.Views
 {
     public class MainMenuView : BaseView<MainMenuView>
     {

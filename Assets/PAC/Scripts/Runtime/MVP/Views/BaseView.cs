@@ -3,7 +3,7 @@ using PAC.Scripts.Runtime.Managers.ViewManager;
 using PAC.Scripts.Runtime.ServiceLocator;
 using UnityEngine;
 
-namespace PAC.Scripts.Runtime.Views
+namespace PAC.Scripts.Runtime.MVP.Views
 {
     public abstract class BaseView<T> : MonoBehaviour
     {

@@ -1,7 +1,7 @@
-﻿using PAC.Scripts.Runtime.Models;
-using PAC.Scripts.Runtime.Views;
+﻿using PAC.Scripts.Runtime.MVP.Models;
+using PAC.Scripts.Runtime.MVP.Views;
 
-namespace PAC.Scripts.Runtime.Presenters
+namespace PAC.Scripts.Runtime.MVP.Presenters
 {
     public class GameplayPresenter : BasePresenter<GameplayView>
     {

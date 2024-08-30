@@ -1,7 +1,7 @@
-﻿using PAC.Scripts.Runtime.Models;
-using PAC.Scripts.Runtime.Views;
+﻿using PAC.Scripts.Runtime.MVP.Models;
+using PAC.Scripts.Runtime.MVP.Views;
 
-namespace PAC.Scripts.Runtime.Presenters
+namespace PAC.Scripts.Runtime.MVP.Presenters
 {
     public class MainMenuPresenter : BasePresenter<MainMenuView>
     {
@@ -27,12 +27,12 @@ namespace PAC.Scripts.Runtime.Presenters
         
         public void StartGame()
         {
-            // Start game
+            _model.StartGame();
         }
         
         public void ShowLevelsPanel()
         {
-            // Show levels panel
+            _model.ShowLevelsPanel();
         }
         
         public override void Dispose()

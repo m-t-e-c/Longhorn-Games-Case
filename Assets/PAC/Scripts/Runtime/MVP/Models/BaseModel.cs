@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PAC.Scripts.Runtime.Models
+namespace PAC.Scripts.Runtime.MVP.Models
 {
     public class BaseModel : IDisposable
     {

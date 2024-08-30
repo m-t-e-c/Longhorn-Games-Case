@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PAC.Scripts.Runtime.Presenters
+namespace PAC.Scripts.Runtime.MVP.Presenters
 {
     public abstract class BasePresenter<T> : IDisposable
     {
