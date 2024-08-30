@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using PAC.Scripts.Runtime.Objects;
+using System.Linq;
+using PAC.Scripts.Runtime.Level;
 using UnityEngine;
 
 namespace PAC.Scripts.Runtime.UI
@@ -8,15 +9,22 @@ namespace PAC.Scripts.Runtime.UI
     {
         [SerializeField] private GameObject levelConditionPrefab;
         
-        private readonly Dictionary<LevelConditionIndicator, CompleteableObject> _levelConditionIndicators = new();
+        private readonly Dictionary<LevelConditionIndicator, LevelCompletionCondition> _levelConditionIndicators = new();
 
-        public void Initialize(List<CompleteableObject> levelConditions)
+        public void Initialize(List<LevelCompletionCondition> levelConditions)
         {
-            foreach (CompleteableObject levelCondition in levelConditions)
+            foreach (LevelCompletionCondition levelCondition in levelConditions)
             {
+                levelCondition.OnConditionMet += OnConditionMet;
                 var levelConditionIndicator = Instantiate(levelConditionPrefab, transform).GetComponent<LevelConditionIndicator>();
                 _levelConditionIndicators.Add(levelConditionIndicator, levelCondition);
             }
+        }
+
+        private void OnConditionMet()
+        {
+            var levelConditionIndicator = _levelConditionIndicators.FirstOrDefault(x => x.Value.IsMet).Key;
+            levelConditionIndicator?.SetCompleted();
         }
     }
 }

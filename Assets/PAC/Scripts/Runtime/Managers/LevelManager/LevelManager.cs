@@ -1,42 +1,34 @@
-﻿using System.Collections.Generic;
-using PAC.Scripts.Runtime.Level;
-using UnityEngine;
+﻿using UnityEngine.SceneManagement;
 
 namespace PAC.Scripts.Runtime.Managers.LevelManager
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : ILevelManager
     {
-        [SerializeField] private List<LevelCompletionCondition> completionConditions;
-        
-        public delegate void LevelCompletedHandler();
-        public event LevelCompletedHandler OnLevelCompleted;
+        private int _currentLevelIndex;
 
-        private void Start()
+        public int GetLevelIndex()
         {
-            InitializeConditions();
+            return _currentLevelIndex;
         }
 
-        private void InitializeConditions()
+        public void LoadNextLevel()
         {
-            foreach (var condition in completionConditions)
-            {
-                condition.Initialize();
-                condition.OnConditionMet += CheckLevelCompletion;
-            }
+            
         }
 
-        private void CheckLevelCompletion()
+        public void LoadLevel(int index)
         {
-            foreach (var condition in completionConditions)
-            {
-                if (!condition.IsMet)
-                {
-                    return;
-                }
-            }
+           
+        }
 
-            OnLevelCompleted?.Invoke();
-            Debug.Log("Level Completed!");
+        public void RestartLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
