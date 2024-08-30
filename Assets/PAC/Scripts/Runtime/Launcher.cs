@@ -1,4 +1,5 @@
-﻿using PAC.Scripts.Runtime.Managers.LevelManager;
+﻿using PAC.Scripts.Runtime.Managers.LevelConditionManager;
+using PAC.Scripts.Runtime.Managers.LevelManager;
 using PAC.Scripts.Runtime.Managers.SoundManager;
 using PAC.Scripts.Runtime.Managers.ViewManager;
 using PAC.Scripts.Runtime.MVP.Views;
@@ -21,6 +22,7 @@ namespace PAC.Scripts.Runtime
         // Custom Managers
         private IViewManager _viewManager;
         private ILevelManager _levelManager;
+        private ILevelConditionManager _levelConditionManager;
         
         private void Awake()
         {
@@ -35,6 +37,9 @@ namespace PAC.Scripts.Runtime
             
             _levelManager = new LevelManager();
             _locator.Register<ILevelManager>(_levelManager);
+            
+            _levelConditionManager = new LevelConditionManager();
+            _locator.Register<ILevelConditionManager>(_levelConditionManager);
             
             _locator.Register<ISoundManager>(soundManager);
         }

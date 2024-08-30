@@ -1,38 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PAC.Scripts.Runtime.Level;
 using UnityEngine;
 
 namespace PAC.Scripts.Runtime.Managers.LevelConditionManager
 {
-    public class LevelConditionManager : MonoBehaviour , ILevelConditionManager
+    public class LevelConditionManager : ILevelConditionManager
     {
-        [SerializeField] private List<LevelCompletionCondition> completionConditions;
-        
-        public delegate void LevelCompletedHandler();
-        public event LevelCompletedHandler OnLevelCompleted;
-        
-        private void Awake()
+        private readonly List<LevelCompletionCondition> _completionConditions = new();
+       
+        public Action OnAllConditionsMet { get; set; }
+
+        public LevelConditionManager()
         {
-            InitializeConditions();
+            Debug.Log("Registered LevelConditionManager");
         }
 
-        private void InitializeConditions()
-        {
-            foreach (var condition in completionConditions)
-            {
-                condition.Initialize();
-                condition.OnConditionMet += CheckLevelCompletion;
-            }
-        }
-        
         public List<LevelCompletionCondition> GetCompletionConditions()
         {
-            return completionConditions;
+            return _completionConditions;
+        }
+
+        public void RegisterCondition(LevelCompletionCondition condition)
+        {
+            _completionConditions.Add(condition);
+            condition.Initialize();
+            condition.OnConditionMet += CheckLevelCompletion;
         }
 
         private void CheckLevelCompletion()
         {
-            foreach (var condition in completionConditions)
+            foreach (var condition in _completionConditions)
             {
                 if (!condition.IsMet)
                 {
@@ -40,7 +38,7 @@ namespace PAC.Scripts.Runtime.Managers.LevelConditionManager
                 }
             }
 
-            OnLevelCompleted?.Invoke();
+            OnAllConditionsMet?.Invoke();
             Debug.Log("Level Completed!");
         }
     }
