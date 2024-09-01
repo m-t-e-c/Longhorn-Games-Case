@@ -16,6 +16,7 @@ namespace PAC.Scripts.Runtime.MVP.Views
             base.Start();
             
             _presenter = new LevelCompletedPresenter(this);
+            
             nextLevelButton.onClick.AddListener(OnNextLevelButtonClicked);
             mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
         }
@@ -30,8 +31,9 @@ namespace PAC.Scripts.Runtime.MVP.Views
             _presenter.ReturnToMainMenu();
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             _presenter.Dispose();
             nextLevelButton.onClick.RemoveListener(OnNextLevelButtonClicked);
             mainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);

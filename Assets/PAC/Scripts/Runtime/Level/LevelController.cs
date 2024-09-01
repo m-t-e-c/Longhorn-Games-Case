@@ -28,5 +28,10 @@ namespace PAC.Scripts.Runtime.Level
         {
             _viewManager.LoadView(new LoadViewParams<LevelCompletedView>("LevelCompletedView"));
         }
+
+        private void OnDestroy()
+        {
+            _levelConditionManager.OnAllConditionsMet -= OnAllConditionsMet;
+        }
     }
 }

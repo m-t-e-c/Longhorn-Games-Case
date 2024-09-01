@@ -11,6 +11,7 @@ namespace PAC.Scripts.Runtime
 {
     public class Launcher : MonoBehaviour
     {
+        private static Launcher _instance;
         private Locator _locator;
         
         // Configs
@@ -26,16 +27,32 @@ namespace PAC.Scripts.Runtime
         
         private void Awake()
         {
-            DontDestroyOnLoad(this);
-            
+            if (_instance != null && _instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            InitializeLocator();
+            InitializeManagers();
+        }
+
+        private void InitializeLocator()
+        {
             _locator = new Locator();
             
             _locator.Register<GameConfig>(gameConfig);
+        }
 
+        private void InitializeManagers()
+        {
             _viewManager = new ViewManager();
             _locator.Register<IViewManager>(_viewManager);
             
-            _levelManager = new LevelManager();
+            _levelManager = new LevelManager(_viewManager);
             _locator.Register<ILevelManager>(_levelManager);
             
             _levelConditionManager = new LevelConditionManager();

@@ -11,11 +11,6 @@ namespace PAC.Scripts.Runtime.Managers.LevelConditionManager
        
         public Action OnAllConditionsMet { get; set; }
 
-        public LevelConditionManager()
-        {
-            Debug.Log("Registered LevelConditionManager");
-        }
-
         public List<LevelCompletionCondition> GetCompletionConditions()
         {
             return _completionConditions;
@@ -39,6 +34,7 @@ namespace PAC.Scripts.Runtime.Managers.LevelConditionManager
             }
 
             OnAllConditionsMet?.Invoke();
+            _completionConditions.Clear();
             Debug.Log("Level Completed!");
         }
     }

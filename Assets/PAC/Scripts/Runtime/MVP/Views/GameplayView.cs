@@ -55,8 +55,9 @@ namespace PAC.Scripts.Runtime.MVP.Views
             soundButton.UpdateData(isActive);
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             _presenter.Dispose();
             
             musicButton.Button.onClick.RemoveListener(OnMusicButtonClicked);

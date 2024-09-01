@@ -26,8 +26,8 @@ namespace PAC.Scripts.Runtime.MVP.Models
             
            GetSettingsDataFromConfig();
            GetLevelData();
+           NotifyDataChanged();
         }
-
 
         private void GetSettingsDataFromConfig()
         {

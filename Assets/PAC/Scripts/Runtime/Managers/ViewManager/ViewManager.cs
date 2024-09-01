@@ -36,22 +36,24 @@ namespace PAC.Scripts.Runtime.Managers.ViewManager
                 OnViewClosed?.Invoke(lastView.Key);
             }
             
-            if (!_openedViews.ContainsKey(loadViewParams.GetViewPresenterType()))
+            if (_openedViews.ContainsKey(loadViewParams.GetViewPresenterType()))
             {
-                Addressables.LoadAssetAsync<GameObject>(loadViewParams.ViewName).Completed += (obj) =>
-                {
-                    if (obj.Status == AsyncOperationStatus.Succeeded)
-                    {
-                        GameObject viewPrefab = obj.Result;
-                        GameObject viewInstance = Object.Instantiate(viewPrefab);
-                        viewInstance.transform.SetAsLastSibling();
-                        viewInstance.GetComponent<Canvas>().sortingOrder = _openedViews.Count + 1;
-                        _openedViews[loadViewParams.GetViewPresenterType()] = viewInstance;
-                        loadViewParams.OnLoad?.Invoke(viewInstance.GetComponent<T>());
-                        OnViewLoaded?.Invoke(loadViewParams.GetViewPresenterType());
-                    }
-                };
+                DestroyView<T>();
             }
+            
+            Addressables.LoadAssetAsync<GameObject>(loadViewParams.ViewName).Completed += (obj) =>
+            {
+                if (obj.Status == AsyncOperationStatus.Succeeded)
+                {
+                    GameObject viewPrefab = obj.Result;
+                    GameObject viewInstance = Object.Instantiate(viewPrefab);
+                    viewInstance.transform.SetAsLastSibling();
+                    viewInstance.GetComponent<Canvas>().sortingOrder = _openedViews.Count + 1;
+                    _openedViews[loadViewParams.GetViewPresenterType()] = viewInstance;
+                    loadViewParams.OnLoad?.Invoke(viewInstance.GetComponent<T>());
+                    OnViewLoaded?.Invoke(loadViewParams.GetViewPresenterType());
+                }
+            };
         }
 
         public void DestroyView<T>()

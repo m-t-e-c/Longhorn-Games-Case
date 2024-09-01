@@ -11,18 +11,10 @@ namespace PAC.Scripts.Runtime.MVP.Presenters
         {
             _model = new MainMenuModel();
             _model.OnDataChanged += OnDataChanged;
-
-            UpdateView();
         }
         
         private void OnDataChanged()
         {
-            UpdateView();
-        }
-
-        private void UpdateView()
-        {
-            // Update view with model data
         }
         
         public void StartGame()
@@ -32,7 +24,7 @@ namespace PAC.Scripts.Runtime.MVP.Presenters
         
         public void ShowLevelsPanel()
         {
-            _model.ShowLevelsPanel();
+            _model.ShowLevelsView();
         }
         
         public override void Dispose()

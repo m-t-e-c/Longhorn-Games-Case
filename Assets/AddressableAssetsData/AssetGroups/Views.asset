@@ -25,6 +25,18 @@ MonoBehaviour:
     m_Address: MainMenuView
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 2fdd00caf7988bc43b4f85071baeb19d
+    m_Address: LevelCompletedView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ad1e89a4ac79cbe42b0c7c641e90bc79
+    m_Address: LevelsView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a9517f3d1ff2dc045abaf46d4f5134c1
+    m_Address: LoadingView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: df7c2278fcbf91f4482974438de5b50c, type: 2}
   m_SchemaSet:

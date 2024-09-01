@@ -16,6 +16,7 @@ namespace PAC.Scripts.Runtime.MVP.Views
             base.Start();
             
             _presenter = new MainMenuPresenter(this);
+            
             startGameButton.onClick.AddListener(OnStartGameButtonClicked);
             levelsButton.onClick.AddListener(OnLevelsButtonClicked);
         }
@@ -30,10 +31,10 @@ namespace PAC.Scripts.Runtime.MVP.Views
             _presenter.ShowLevelsPanel();
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             _presenter?.Dispose();
-            
             startGameButton.onClick.RemoveListener(OnStartGameButtonClicked);
             levelsButton.onClick.RemoveListener(OnLevelsButtonClicked);
         }

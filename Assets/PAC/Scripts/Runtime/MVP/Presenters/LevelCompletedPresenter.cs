@@ -6,7 +6,6 @@ namespace PAC.Scripts.Runtime.MVP.Presenters
 {
     public class LevelCompletedPresenter : BasePresenter<LevelCompletedView>
     {
-        
         private LevelCompletedModel _model;
         
         public LevelCompletedPresenter(LevelCompletedView view) : base(view)
@@ -22,13 +21,12 @@ namespace PAC.Scripts.Runtime.MVP.Presenters
         
         public void NextLevel()
         {
-            // Load next level
-            Debug.Log("NextLevel");
+           _model.NextLevel();
         }
         
         public void ReturnToMainMenu()
         {
-            Debug.Log("MainMenu");
+            _model.ReturnToMainMenu();
         }
         
         public override void Dispose()

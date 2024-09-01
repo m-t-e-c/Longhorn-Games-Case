@@ -11,5 +11,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PAC/Scenes/Levels/Level 1.unity
     guid: 0be895ccf3850494cbd131c1b7e0f39c
+  - enabled: 1
+    path: Assets/PAC/Scenes/Levels/Level 2.unity
+    guid: c5ea5d385dc4e0c4e9963ec5db1d9151
+  - enabled: 1
+    path: Assets/PAC/Scenes/Levels/Level 3.unity
+    guid: 918805e64b6b0c34eacb2dd6275fddf5
+  - enabled: 1
+    path: Assets/PAC/Scenes/Levels/Level 4.unity
+    guid: 332f53a0424f6504892b432e467b4202
+  - enabled: 1
+    path: Assets/PAC/Scenes/Levels/Level 5.unity
+    guid: 8ae9526199e966b4eb2c6b1887b80b29
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: e19d444e8d6c3664abcaee7eb93f883e, type: 2}

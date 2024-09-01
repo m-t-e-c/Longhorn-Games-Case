@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 4863277769778432023}
   - component: {fileID: 178496999151735180}
   - component: {fileID: 2696640507651414024}
+  - component: {fileID: -6375937669528859815}
   m_Layer: 5
   m_Name: ToggleSettingsButton
   m_TagString: Untagged
@@ -326,5 +327,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsIcon: {fileID: 4863277768357829522}
-  settingsIconOpen: {fileID: 21300000, guid: cbc65e37675d041a4885c723d4308380, type: 3}
-  settingsIconClosed: {fileID: 21300000, guid: 2a0238af227554c2eb9f6c4d5646a153, type: 3}
+  activeIcon: {fileID: 0}
+  deactiveIcon: {fileID: 0}
+--- !u!114 &-6375937669528859815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863277769778432022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c218f4b4f14d44e3841a6bd83efc7d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

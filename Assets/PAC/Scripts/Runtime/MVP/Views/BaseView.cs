@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using PAC.Scripts.Runtime.Managers.ViewManager;
 using PAC.Scripts.Runtime.ServiceLocator;
 using UnityEngine;
@@ -7,15 +8,15 @@ namespace PAC.Scripts.Runtime.MVP.Views
 {
     public abstract class BaseView<T> : MonoBehaviour
     {
-        [SerializeField] protected RectTransform container;
         [SerializeField] protected CanvasGroup canvasGroup;
         [SerializeField] private bool forceAddToViewList;
 
-        public bool canCloseWithEscape;
         public bool ignoreStartFadeAnimation;
         protected string ViewName;
 
         private IViewManager _viewManager;
+        
+        private Tween _fadeTween;
 
         protected void Awake()
         {
@@ -23,7 +24,7 @@ namespace PAC.Scripts.Runtime.MVP.Views
                 return;
             
             canvasGroup.alpha = 0;
-            canvasGroup.DOFade(1, 0.2f);
+            _fadeTween = canvasGroup.DOFade(1, 0.2f);
         }
 
         protected virtual void Start()
@@ -36,17 +37,15 @@ namespace PAC.Scripts.Runtime.MVP.Views
             }
         }
 
-        protected virtual void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape) && canCloseWithEscape)
-            {
-                Close();
-            }
-        }
-
         protected virtual void Close()
         {
-            canvasGroup.DOFade(0, 0.1f).OnComplete(() => _viewManager?.DestroyView<T>());
+            _fadeTween = canvasGroup.DOFade(0, 0.1f).OnComplete(() => _viewManager?.DestroyView<T>());
+        }
+        
+        protected virtual void OnDestroy()
+        {
+            _viewManager.DestroyView<T>();
+            _fadeTween?.Kill();
         }
     }
 }

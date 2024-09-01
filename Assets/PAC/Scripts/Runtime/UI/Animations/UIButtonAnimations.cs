@@ -40,5 +40,11 @@ namespace PAC.Scripts.Runtime.UI.Animations
         {
             PlayPointerUpAnimation();
         }
+        
+        private void OnDestroy()
+        {
+            _pointerDownTween?.Kill();
+            _pointerUpTween?.Kill();
+        }
     }
 }

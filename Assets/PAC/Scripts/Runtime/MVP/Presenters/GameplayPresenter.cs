@@ -12,25 +12,25 @@ namespace PAC.Scripts.Runtime.MVP.Presenters
             _model = new GameplayModel();
             _model.OnDataChanged += OnDataChanged;
 
-            InitializeLevel();
+            InitializeLevelConditions();
             UpdateView();
-        }
-
-        private void InitializeLevel()
-        {
-            View.UpdateLevelLabel(_model.Level);
-            View.UpdateLevelConditions(_model.LevelConditions);
         }
 
         private void OnDataChanged()
         {
             UpdateView();
         }
-        
+
         private void UpdateView()
         {
             View.SetMusicActive(_model.IsMusicActive);
             View.SetSoundActive(_model.IsSoundActive);
+        }
+
+        private void InitializeLevelConditions()
+        {
+            View.UpdateLevelLabel(_model.Level);
+            View.UpdateLevelConditions(_model.LevelConditions);
         }
         
         public void ToggleMusic()
