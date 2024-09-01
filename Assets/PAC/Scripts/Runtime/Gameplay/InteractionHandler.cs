@@ -24,7 +24,11 @@ namespace PAC.Scripts.Runtime.Gameplay
                 {
                     if (hit.collider.TryGetComponent(out SelectableObject selectableObject))
                     {
-                        _currentSelectedObject?.Deselect();
+                        if (_currentSelectedObject != null && _currentSelectedObject != selectableObject)
+                        {
+                            _currentSelectedObject?.Deselect();
+                        }
+                        
                         _currentSelectedObject = selectableObject;
                         _currentSelectedObject.Select();
                         return;

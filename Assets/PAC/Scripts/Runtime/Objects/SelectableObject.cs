@@ -12,6 +12,11 @@ namespace PAC.Scripts.Runtime.Objects
 
         private Vector3 _startPosition;
 
+        protected Sequence SelectSequence;
+        protected Sequence FloatSequence;
+
+        private bool _isSelected;
+
         private void Start()
         {
             _startPosition = transform.position;
@@ -26,17 +31,42 @@ namespace PAC.Scripts.Runtime.Objects
                     return rule.strategy;
                 }
             }
+
             return null;
         }
 
-        public void Select()
+        public virtual void Select()
         {
-            transform.DOMove(_startPosition + Vector3.up * 0.15f, 0.5f).SetEase(Ease.OutBounce);
+            if (_isSelected)
+                return;
+
+            _isSelected = true;
+
+            SelectSequence = DOTween.Sequence();
+            SelectSequence.Append(transform.DOScale(Vector3.one * 1.2f, 0.1f));
+            SelectSequence.Append(transform.DOScale(Vector3.one * 0.8f, 0.1f));
+            SelectSequence.Append(transform.DOScale(Vector3.one, 0.1f));
+            SelectSequence.Join(transform.DOMove(_startPosition + Vector3.up * 0.2f, 0.5f).SetEase(Ease.OutBack));
+
+            SelectSequence.OnComplete(() =>
+            {
+                FloatSequence = DOTween.Sequence();
+                FloatSequence.Append(transform.DOMoveY(_startPosition.y + 0.3f, 1f).SetEase(Ease.InOutSine))
+                    .SetLoops(-1, LoopType.Yoyo);
+            });
         }
 
-        public void Deselect()
+        public virtual void Deselect()
         {
-            transform.DOMove(_startPosition, 0.5f).SetEase(Ease.OutBounce);
+            if (!_isSelected)
+                return;
+
+            _isSelected = false;
+            
+            FloatSequence.Kill();
+            SelectSequence.Kill();
+
+            transform.DOMove(_startPosition, 0.5f).SetEase(Ease.InBack);
         }
     }
 }

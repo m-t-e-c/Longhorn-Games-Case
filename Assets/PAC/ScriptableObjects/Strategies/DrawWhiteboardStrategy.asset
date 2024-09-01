@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c55ebb36f9a4511addd5de1fb55206e, type: 3}
   m_Name: DrawWhiteboardStrategy
   m_EditorClassIdentifier: 
+  color: {r: 0, g: 0.9897847, b: 1, a: 1}

@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace PAC.Scripts.Runtime.Strategies
 {
     public abstract class Strategy : ScriptableObject
     {
-        public abstract Task Execute(Transform source, Transform target); 
+        public abstract UniTask Execute(Transform source, Transform target); 
     }
 }
