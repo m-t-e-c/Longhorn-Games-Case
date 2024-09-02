@@ -8,7 +8,8 @@ namespace PAC.Scripts.Runtime.Level
     {
         [SerializeField] private List<CompleteableObject> objectsToComplete;
         [SerializeField] private bool findObjectsAtRuntime = true;
-        
+        public List<CompleteableObject> ObjectsToComplete => objectsToComplete;
+
         public override void Initialize()
         {
             if (findObjectsAtRuntime)
@@ -34,7 +35,7 @@ namespace PAC.Scripts.Runtime.Level
             }
         }
 
-        private void CheckCondition()
+        private void CheckCondition(CompleteableObject completeableObject)
         {
             foreach (var obj in objectsToComplete)
             {

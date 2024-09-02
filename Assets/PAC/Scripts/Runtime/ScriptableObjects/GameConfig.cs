@@ -8,14 +8,14 @@ namespace PAC.Scripts.Runtime.ScriptableObjects
         [field:SerializeField] public bool IsSoundActive { get; private set; }
         [field:SerializeField] public bool IsMusicActive { get; private set; }
         
-        public void ToggleSound()
+        public void SetSoundActive(bool isActive)
         {
-            IsSoundActive = !IsSoundActive;
+            IsSoundActive = isActive;
         }
         
-        public void ToggleMusic()
+        public void SetMusicActive(bool isActive)
         {
-            IsMusicActive = !IsMusicActive;
+            IsMusicActive = isActive;
         }
     }
 }

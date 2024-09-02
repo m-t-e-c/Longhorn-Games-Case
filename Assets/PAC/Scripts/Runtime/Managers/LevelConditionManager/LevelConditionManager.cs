@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using PAC.Scripts.Runtime.Level;
 using UnityEngine;
 
@@ -7,34 +6,30 @@ namespace PAC.Scripts.Runtime.Managers.LevelConditionManager
 {
     public class LevelConditionManager : ILevelConditionManager
     {
-        private readonly List<LevelCompletionCondition> _completionConditions = new();
-       
+        private LevelCompletionCondition _completionCondition;
+
         public Action OnAllConditionsMet { get; set; }
 
-        public List<LevelCompletionCondition> GetCompletionConditions()
+        public LevelCompletionCondition GetCompletionCondition()
         {
-            return _completionConditions;
+            return _completionCondition;
         }
 
         public void RegisterCondition(LevelCompletionCondition condition)
         {
-            _completionConditions.Add(condition);
+            _completionCondition = condition;
             condition.Initialize();
             condition.OnConditionMet += CheckLevelCompletion;
         }
 
         private void CheckLevelCompletion()
         {
-            foreach (var condition in _completionConditions)
+            if (!_completionCondition.IsMet)
             {
-                if (!condition.IsMet)
-                {
-                    return;
-                }
+                return;
             }
 
             OnAllConditionsMet?.Invoke();
-            _completionConditions.Clear();
             Debug.Log("Level Completed!");
         }
     }

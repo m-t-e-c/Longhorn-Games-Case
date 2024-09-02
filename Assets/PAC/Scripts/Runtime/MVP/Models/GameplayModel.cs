@@ -11,7 +11,7 @@ namespace PAC.Scripts.Runtime.MVP.Models
     {
         public bool IsMusicActive { get; private set; }
         public bool IsSoundActive { get; private set; }
-        public List<LevelCompletionCondition> LevelConditions { get; private set; } = new();
+        public LevelCompletionCondition LevelCondition { get; private set; }
         public int Level { get; private set; }
 
         private readonly GameConfig _gameConfig;
@@ -37,19 +37,21 @@ namespace PAC.Scripts.Runtime.MVP.Models
         
         private void GetLevelData()
         {
-            LevelConditions = _levelConditionManager.GetCompletionConditions();
+            LevelCondition = _levelConditionManager.GetCompletionCondition();
             Level = _levelManager.GetLevelIndex();
         }
         
         public void SetMusicActive(bool isActive)
         {
             IsMusicActive = isActive;
+            _gameConfig.SetMusicActive(isActive);
             NotifyDataChanged();
         }
         
         public void SetSoundActive(bool isActive)
         {
             IsSoundActive = isActive;
+            _gameConfig.SetSoundActive(isActive);
             NotifyDataChanged();
         }
     }

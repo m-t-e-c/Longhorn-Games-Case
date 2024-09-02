@@ -9,14 +9,17 @@ namespace PAC.Scripts.Runtime.Strategies
     {
         [SerializeField] private Color color;
         
-        public override async UniTask Execute(Transform source, Transform target)
+        public override async UniTask<bool> Execute(Transform source, Transform target)
         {
             var whiteboard = target.GetComponent<Whiteboard>();
             if (whiteboard != null)
             {
                 var pen = source.GetComponent<Pen>();
                 await pen.DrawWhiteBoard(whiteboard, color);
+                return true;
             }
+
+            return false;
         }
     }
 }

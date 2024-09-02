@@ -30,7 +30,7 @@ namespace PAC.Scripts.Runtime.MVP.Presenters
         private void InitializeLevelConditions()
         {
             View.UpdateLevelLabel(_model.Level);
-            View.UpdateLevelConditions(_model.LevelConditions);
+            View.UpdateLevelCondition(_model.LevelCondition);
         }
         
         public void ToggleMusic()

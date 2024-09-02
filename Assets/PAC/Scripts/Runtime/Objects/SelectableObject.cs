@@ -6,20 +6,24 @@ using UnityEngine;
 
 namespace PAC.Scripts.Runtime.Objects
 {
-    public class SelectableObject : MonoBehaviour
+    public abstract class SelectableObject : MonoBehaviour
     {
         public List<InteractionRule> interactionRules;
 
-        private Vector3 _startPosition;
+        protected Vector3 StartPosition;
+        protected Vector3 StartRotation;
 
         protected Sequence SelectSequence;
         protected Sequence FloatSequence;
 
         private bool _isSelected;
+        
+        public bool IsUsed { get; private set; }
 
-        private void Start()
+        protected virtual void Start()
         {
-            _startPosition = transform.position;
+            StartPosition = transform.position;
+            StartRotation = transform.eulerAngles;
         }
 
         public Strategy GetStrategyForMatch(GameObject other)
@@ -46,14 +50,19 @@ namespace PAC.Scripts.Runtime.Objects
             SelectSequence.Append(transform.DOScale(Vector3.one * 1.2f, 0.1f));
             SelectSequence.Append(transform.DOScale(Vector3.one * 0.8f, 0.1f));
             SelectSequence.Append(transform.DOScale(Vector3.one, 0.1f));
-            SelectSequence.Join(transform.DOMove(_startPosition + Vector3.up * 0.2f, 0.5f).SetEase(Ease.OutBack));
+            SelectSequence.Join(transform.DOMove(StartPosition + Vector3.up * 0.2f, 0.5f).SetEase(Ease.OutBack));
 
             SelectSequence.OnComplete(() =>
             {
                 FloatSequence = DOTween.Sequence();
-                FloatSequence.Append(transform.DOMoveY(_startPosition.y + 0.3f, 1f).SetEase(Ease.InOutSine))
+                FloatSequence.Append(transform.DOMoveY(StartPosition.y + 0.3f, 1f).SetEase(Ease.InOutSine))
                     .SetLoops(-1, LoopType.Yoyo);
             });
+        }
+
+        protected void SetUsed()
+        {
+            IsUsed = true;
         }
 
         public virtual void Deselect()
@@ -66,7 +75,13 @@ namespace PAC.Scripts.Runtime.Objects
             FloatSequence.Kill();
             SelectSequence.Kill();
 
-            transform.DOMove(_startPosition, 0.5f).SetEase(Ease.InBack);
+            transform.DOMove(StartPosition, 0.5f).SetEase(Ease.InBack);
+        }
+        
+        protected virtual void OnDestroy()
+        {
+            SelectSequence?.Kill();
+            FloatSequence?.Kill();
         }
     }
 }

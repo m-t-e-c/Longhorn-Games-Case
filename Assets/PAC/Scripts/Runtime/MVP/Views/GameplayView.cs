@@ -40,9 +40,9 @@ namespace PAC.Scripts.Runtime.MVP.Views
             levelLabel.text = $"LEVEL {level}";
         }
 
-        public void UpdateLevelConditions(List<LevelCompletionCondition> levelConditions)
+        public void UpdateLevelCondition(LevelCompletionCondition levelCondition)
         {
-            levelConditionPanel.Initialize(levelConditions);
+            levelConditionPanel.Initialize(levelCondition);
         }
         
         public void SetMusicActive(bool isActive)

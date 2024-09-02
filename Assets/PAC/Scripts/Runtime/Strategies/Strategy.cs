@@ -5,6 +5,6 @@ namespace PAC.Scripts.Runtime.Strategies
 {
     public abstract class Strategy : ScriptableObject
     {
-        public abstract UniTask Execute(Transform source, Transform target); 
+        public abstract UniTask<bool> Execute(Transform source, Transform target); 
     }
 }

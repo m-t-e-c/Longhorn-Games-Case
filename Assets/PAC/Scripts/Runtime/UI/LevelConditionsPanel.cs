@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PAC.Scripts.Runtime.Level;
+using PAC.Scripts.Runtime.Objects;
 using UnityEngine;
 
 namespace PAC.Scripts.Runtime.UI
@@ -8,22 +9,26 @@ namespace PAC.Scripts.Runtime.UI
     public class LevelConditionsPanel : MonoBehaviour
     {
         [SerializeField] private GameObject levelConditionPrefab;
-        
-        private readonly Dictionary<LevelConditionIndicator, LevelCompletionCondition> _levelConditionIndicators = new();
 
-        public void Initialize(List<LevelCompletionCondition> levelConditions)
+        private readonly Dictionary<LevelConditionIndicator, CompleteableObject> _levelConditionIndicators = new();
+
+        public void Initialize(LevelCompletionCondition levelCondition)
         {
-            foreach (LevelCompletionCondition levelCondition in levelConditions)
+            var completeConditionAllObjectsUsed = levelCondition as CompleteConditionAllObjectsUsed;
+            if (completeConditionAllObjectsUsed != null)
             {
-                levelCondition.OnConditionMet += OnConditionMet;
-                var levelConditionIndicator = Instantiate(levelConditionPrefab, transform).GetComponent<LevelConditionIndicator>();
-                _levelConditionIndicators.Add(levelConditionIndicator, levelCondition);
+                foreach (var completeableObject in completeConditionAllObjectsUsed.ObjectsToComplete)
+                {
+                    completeableObject.OnComplete += OnComplete;
+                    var levelConditionIndicator = Instantiate(levelConditionPrefab, transform).GetComponent<LevelConditionIndicator>();
+                    _levelConditionIndicators.Add(levelConditionIndicator, completeableObject);
+                }
             }
         }
 
-        private void OnConditionMet()
+        private void OnComplete(CompleteableObject completeableObject)
         {
-            var levelConditionIndicator = _levelConditionIndicators.FirstOrDefault(x => x.Value.IsMet).Key;
+            var levelConditionIndicator = _levelConditionIndicators.FirstOrDefault(x => x.Value == completeableObject).Key;
             levelConditionIndicator?.SetCompleted();
         }
     }
