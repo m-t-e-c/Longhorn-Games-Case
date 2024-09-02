@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 1d41821bef3e84af597185b6d07710aa, type: 3}
+    - {fileID: 2800000, guid: ce369e4dfcac246fc9304337cb93050e, type: 3}
+    - {fileID: 2800000, guid: a508fa5583c824dd78ef0a4816408a73, type: 3}
+    - {fileID: 2800000, guid: 0ffc48ae791304c28a089ddbab3be5ec, type: 3}
+    - {fileID: 2800000, guid: 21a720df3e95d4e9cbf40d621813f806, type: 3}
+    - {fileID: 2800000, guid: b4a8919e755f340cfbf4222fdcf2af47, type: 3}
+    - {fileID: 2800000, guid: 3b138056c48cc4b0b9212a17f2770603, type: 3}
+    - {fileID: 2800000, guid: efb6c9334e498404883cd7150d537d74, type: 3}
+    - {fileID: 2800000, guid: dd01d53f3253e4265af152ab692b3ed5, type: 3}
+    - {fileID: 2800000, guid: 041db497dc0534e44bf357d21ff8e084, type: 3}
+    - {fileID: 2800000, guid: d6b2ea048947e4289af031c148a21b77, type: 3}
+    - {fileID: 2800000, guid: df8b91c138e4947ca91fa0a79d5033ba, type: 3}
+    - {fileID: 2800000, guid: c27d0bf22a4434877bd820af274b3252, type: 3}
+    - {fileID: 2800000, guid: b0a6198185e7d4ad9a5f93d1e8601cef, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: b0a6198185e7d4ad9a5f93d1e8601cef, type: 3}
+  - {fileID: 21300000, guid: df8b91c138e4947ca91fa0a79d5033ba, type: 3}
+  - {fileID: 21300000, guid: c27d0bf22a4434877bd820af274b3252, type: 3}
+  - {fileID: 21300000, guid: efb6c9334e498404883cd7150d537d74, type: 3}
+  - {fileID: 21300000, guid: d6b2ea048947e4289af031c148a21b77, type: 3}
+  - {fileID: 21300000, guid: a508fa5583c824dd78ef0a4816408a73, type: 3}
+  - {fileID: 21300000, guid: 3b138056c48cc4b0b9212a17f2770603, type: 3}
+  - {fileID: 21300000, guid: 041db497dc0534e44bf357d21ff8e084, type: 3}
+  - {fileID: 21300000, guid: 1d41821bef3e84af597185b6d07710aa, type: 3}
+  - {fileID: 21300000, guid: ce369e4dfcac246fc9304337cb93050e, type: 3}
+  - {fileID: 21300000, guid: b4a8919e755f340cfbf4222fdcf2af47, type: 3}
+  - {fileID: 21300000, guid: 0ffc48ae791304c28a089ddbab3be5ec, type: 3}
+  - {fileID: 21300000, guid: dd01d53f3253e4265af152ab692b3ed5, type: 3}
+  - {fileID: 21300000, guid: 21a720df3e95d4e9cbf40d621813f806, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Label_Ribbon02
+  - Image_CircleGlow_White
+  - ItemFrame03_White2
+  - Btn_Rectangle00_n_Orange
+  - Icon_ColorIcon_Emoji
+  - Battle_TimerInfo_Frame1
+  - Btn_Rectangle00_n_Mint
+  - Btn_Rectangle03_Green
+  - Background_01
+  - Background_ScreenGlow
+  - Btn_MenuButton_Rectangle03_Yellow
+  - Battle_TimerInfo_Frame2_White
+  - Btn_Rectangle02_Orange
+  - Btn_IconButton_Circle_121_White
+  m_RenderDataMap: {}
+  m_Tag: UI
+  m_IsVariant: 0

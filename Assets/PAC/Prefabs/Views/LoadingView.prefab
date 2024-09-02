@@ -190,10 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3b3799b8e945ff9afef80105e994da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  container: {fileID: 7904132661924391967}
   canvasGroup: {fileID: 7904132662017819782}
   forceAddToViewList: 0
-  canCloseWithEscape: 0
   ignoreStartFadeAnimation: 0
 --- !u!1 &7904132661924391966
 GameObject:
@@ -420,7 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

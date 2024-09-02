@@ -227,10 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee678a7763f48368fa99e3684c8a9e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  container: {fileID: 3225559309166556042}
   canvasGroup: {fileID: 70548208}
   forceAddToViewList: 0
-  canCloseWithEscape: 0
   ignoreStartFadeAnimation: 0
   nextLevelButton: {fileID: 5354046699538040012}
   mainMenuButton: {fileID: 5354046698853411188}
@@ -598,7 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -859,6 +857,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3b138056c48cc4b0b9212a17f2770603, type: 3}
+    - target: {fileID: 7401319474117368468, guid: 0fb8420a0f6a624469d74401ca68e3cc, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7566186999172808800, guid: 0fb8420a0f6a624469d74401ca68e3cc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1016,6 +1018,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: dd01d53f3253e4265af152ab692b3ed5, type: 3}
+    - target: {fileID: 7401319474117368468, guid: 0fb8420a0f6a624469d74401ca68e3cc, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7566186999172808800, guid: 0fb8420a0f6a624469d74401ca68e3cc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
